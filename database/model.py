@@ -1,12 +1,12 @@
+from os import getenv
 from sqlalchemy import String
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_engine
-from config import SQL_ALCHEMY_DATABASE_URI
 
 # Creating tables needed for registration in the bot
 
 # Create an asynchronous engine using the specified database URI(config.py)
-engine = create_async_engine(SQL_ALCHEMY_DATABASE_URI, echo=True)
+engine = create_async_engine(getenv("SQL_ALCHEMY_DATABASE_URI"), echo=True)
 
 # Create an asynchronous session factory
 async_session = async_sessionmaker(engine)

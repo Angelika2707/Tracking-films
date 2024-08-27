@@ -9,7 +9,7 @@ from aiogram.filters import Command
 from aiogram import Bot, Dispatcher, types
 from aiogram.enums import ParseMode
 from aiogram.types import Message
-from config import TOKEN
+from os import getenv
 
 from database.requests import insert_movie, list_movie, delete_movie
 from database.model import create_database
@@ -148,7 +148,7 @@ async def echo_handler(message: Message) -> None:
 async def main() -> None:
     await create_database()
 
-    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    bot = Bot(token=getenv("TOKEN"), default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     await dp.start_polling(bot)
 
 

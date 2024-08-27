@@ -9,6 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      TOKEN: ${{ secrets.TOKEN }}
+      SQL_ALCHEMY_DATABASE_URI: ${{ secrets.SQL_ALCHEMY_DATABASE_URI }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
